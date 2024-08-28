@@ -1,3 +1,12 @@
+/* General Styles */
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #f8f8f8;
+}
+
+/* Root container */
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -5,19 +14,23 @@
   text-align: center;
 }
 
+/* Logo Styles */
 .logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
+/* Logo Spin Animation */
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
@@ -33,74 +46,38 @@
   }
 }
 
+/* Card Styles */
 .card {
   padding: 2em;
 }
 
+/* Read-the-docs Link Styles */
 .read-the-docs {
   color: #888;
 }
 
-
-/* Ensure body and html are styled for full height */
-body, html, #root {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
-
-/* Center the Zego UI Kit modal */
-.zego-ui-kit {
+/* Call Invitation Modal Styles */
+.app-call-invitation-modal {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   max-width: 90%;
   max-height: 90%;
-  overflow: auto; /* Allow scrolling if content overflows */
+  overflow-y: auto;
   z-index: 1000; /* Ensure it is above other elements */
-  background: white; /* White background for better visibility */
-  border-radius: 8px; /* Optional: rounded corners for the modal */
+  background-color: white;
+  border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Optional: shadow effect */
 }
 
-/* Custom waiting page styles */
-.custom-waiting-page {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  z-index: 1001;
-  display: none; /* Hide initially */
-}
-
-/* Custom call invitation dialog styles */
-.custom-confirm-dialog {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  z-index: 1002;
-  display: none; /* Hide initially */
-}
-
-/* Ensure buttons are styled */
-.custom-confirm-dialog button,
-.custom-waiting-page button {
+.app-call-invitation-modal button {
   display: block;
   margin: 10px auto;
 }
 
-/* Container for call invitation modal */
-.call-invitation-modal-container {
+/* Call Invitation Modal Container */
+.app-call-invitation-modal-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -112,12 +89,48 @@ body, html, #root {
   background-color: #f0f0f0; /* Light gray background color */
 }
 
-/* Style for buttons */
-.call-invitation-modal {
-  margin: 10px;
-  cursor: pointer;
+/* Zego UI Kit Modal Styles */
+.zego-ui-kit {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 90%;
+  max-height: 90%;
+  overflow: auto;
+  z-index: 1001; /* Ensure it is above other elements */
+  background: white; /* White background for better visibility */
+  border-radius: 8px; /* Optional: rounded corners for the modal */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Optional: shadow effect */
 }
 
+/* Custom Waiting Page Styles */
+.custom-waiting-page {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  z-index: 1002;
+}
+
+/* Custom Confirm Dialog Styles */
+.custom-confirm-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  z-index: 1003;
+}
+
+/* Input Styles */
 input {
   margin-bottom: 10px;
 }

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import ZegoCall from './ZegoCall'; // Import the ZegoCall component
 import { ZegoUIKitPrebuilt } from "@zegocloud/zego-uikit-prebuilt";
-
+import CallInvitationComponent from './CallInvitationComponent';
 const UserProfile = () => {
   const { email } = useParams(); // Get email from URL parameters
   const [user, setUser] = useState(null);
@@ -82,6 +82,8 @@ const UserProfile = () => {
           <ZegoCall userId={user._id} userName={user.name} calleeId={otherUser._id} />
         </div>
       ))}
+      <h3>Using ZegoCall Component</h3>
+      <CallInvitationComponent userId={user._id} userName={"user_" + user._id} />
     </div>
   );
 };

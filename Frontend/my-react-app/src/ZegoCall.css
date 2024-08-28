@@ -1,0 +1,30 @@
+/* ZegoCall.css */
+
+/* Namespace your styles */
+.zego-custom-confirm-dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    z-index: 2000; /* Higher z-index if necessary */
+  }
+  
+  /* Additional specific styling for Zego UI Kit */
+  .zego-ui-kit {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90%;
+    max-height: 90%;
+    overflow: auto;
+    z-index: 2000; /* Higher z-index if necessary */
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+  

@@ -189,10 +189,10 @@
 
 
 
-
 import React, { useEffect, useRef } from "react";
 import { ZIM } from "zego-zim-web";
 import { ZegoUIKitPrebuilt } from "@zegocloud/zego-uikit-prebuilt";
+// import "./ZegoCall.css";  // Import the CSS file
 
 export default function ZegoCall({ userId, userName, calleeId }) {
   const zeroCloudInstance = useRef(null);
@@ -214,34 +214,36 @@ export default function ZegoCall({ userId, userName, calleeId }) {
         zeroCloudInstance.current = ZegoUIKitPrebuilt.create(KitToken);
         zeroCloudInstance.current.addPlugins({ ZIM });
 
-        await zeroCloudInstance.current.login(userId, userName); // Ensure login is successful
+        await zeroCloudInstance.current.login(userId, userName);
         console.log("Zego login successful");
 
         zeroCloudInstance.current.setCallInvitationConfig({
           enableCustomCallInvitationDialog: true,
           onConfirmDialogWhenReceiving: (callType, caller, refuse, accept, data) => {
             const confirmDialogDom = document.createElement('div');
-            confirmDialogDom.className = 'custom-confirm-dialog';
+            confirmDialogDom.className = 'custom-confirm-dialog'; // Use CSS class
             confirmDialogDom.innerHTML = `
-              <div>Call from ${caller.userName}</div>
-              <button id="refuse-button">Refuse</button>
-              <button id="accept-button">Accept</button>
+              <div class="custom-dialog-content">
+                <div>Call from ${caller.userName}</div>
+                <button id="refuse-button">Refuse</button>
+                <button id="accept-button">Accept</button>
+              </div>
             `;
             document.body.appendChild(confirmDialogDom);
 
             document.getElementById('refuse-button').onclick = () => {
               refuse();
-              confirmDialogDom.style.display = 'none';
+              confirmDialogDom.remove(); // Clean up dialog
             };
             document.getElementById('accept-button').onclick = () => {
               accept();
-              confirmDialogDom.style.display = 'none';
+              confirmDialogDom.remove(); // Clean up dialog
             };
           },
           onCallInvitationEnded: (reason) => {
             const confirmDialogDom = document.querySelector('.custom-confirm-dialog');
             if (confirmDialogDom) {
-              confirmDialogDom.style.display = 'none';
+              confirmDialogDom.remove(); // Clean up dialog
             }
           }
         });
@@ -252,15 +254,10 @@ export default function ZegoCall({ userId, userName, calleeId }) {
 
     initializeZego();
 
-    // Cleanup function to remove custom dialogs
     return () => {
       const confirmDialogDom = document.querySelector('.custom-confirm-dialog');
       if (confirmDialogDom) {
-        confirmDialogDom.remove();
-      }
-      const waitingPageDom = document.querySelector('.custom-waiting-page');
-      if (waitingPageDom) {
-        waitingPageDom.remove();
+        confirmDialogDom.remove(); // Clean up dialog on unmount
       }
     };
   }, [userId, userName]);
